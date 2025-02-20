@@ -3,7 +3,7 @@ const user = require("../models/product_model");
 
 const getMobiles = async (req, res) => {
     try {
-        res.json(await user.find());
+        res.json(await user.find(req.query));
         res.end();
     } catch (ex) {
         console.log(ex);
@@ -46,5 +46,7 @@ const deleteSpecificProduct = async (req, res) => {
         console.log(ex);
     }
 }
+
+
 
 module.exports = { getMobiles, addProd, findSpecificPoduct,deleteSpecificProduct};
