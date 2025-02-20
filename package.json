@@ -1,0 +1,19 @@
+{
+  "name": "yamo_raktam",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node yamo.js",
+    "server": "nodemon yamo.js"
+  },
+  "author": "Mogal Hussain Baig",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.10.1",
+    "nodemon": "^3.1.9"
+  }
+}
