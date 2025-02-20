@@ -12,6 +12,7 @@ app.use(express.json());
 
 app.use("/api", route);
 
+
 const start = async () => {
     app.listen(PORT, (error) => {
         if (error != null) {
