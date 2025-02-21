@@ -3,7 +3,19 @@ const user = require("../models/product_model");
 
 const getMobiles = async (req, res) => {
     try {
-        res.json(await user.find(req.query));
+        console.log(req.query);
+        const page=req.query.page ?? 1;
+        const limit=req.query.limit ?? 10;
+
+        console.log("page="+page);
+        console.log("limit="+limit);
+
+        
+        const limitOne=parseInt(limit);
+        const skip=(page-1)*limit;
+
+        res.json(await user.find().skip(skip).limit(limit));
+
         res.end();
     } catch (ex) {
         console.log(ex);
@@ -48,5 +60,18 @@ const deleteSpecificProduct = async (req, res) => {
 }
 
 
+const deleteAllData=async (req,res) => {
+ try{
+    const data=await user.deleteMany({});
+    res.json({
+      "status" : "all records deleted successfully"
+    });
+ }catch(ex){
+    res.json({
+        "error" : ex.message
+      });
+ }
+};
 
-module.exports = { getMobiles, addProd, findSpecificPoduct,deleteSpecificProduct};
+
+module.exports = { getMobiles, addProd, findSpecificPoduct,deleteSpecificProduct,deleteAllData};
